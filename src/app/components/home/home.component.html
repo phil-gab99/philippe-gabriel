@@ -1,0 +1,14 @@
+@if (bio$ | async; as bio) {
+<div class="container d-flex align-items-center h-100">
+  <div>
+    <h1>
+      Hello. My name is
+      <span class="fw-bold">{{ bio.firstName }}</span>
+      <span class="fw-light"> {{ bio.lastName }}</span>
+    </h1>
+    @for (par of bio.about; track par) {
+    <h5>{{ par }}</h5>
+    }
+  </div>
+</div>
+}

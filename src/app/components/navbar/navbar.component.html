@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  @if (bio$ | async; as bio) {
+  <button  type="button" mat-button routerLink="/">
+    <span class="fs-4 fw-bold">{{ bio.firstName }}</span>
+    <span class="fs-4 fw-light">{{ bio.lastName }}</span>
+  </button>
+  }
+
+  <span class="spacer"></span>
+
+  @for (item of navItems; track item) {
+  <button class="fs-5 px-3" mat-button>
+    {{ item.title }}
+  </button>
+  }
+</mat-toolbar>

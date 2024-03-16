@@ -1,0 +1,30 @@
+<div class="container d-flex align-items-center justify-content-center h-100 text-center">
+  <div>
+    <h1 class="fs-1 fw-bold my-3">My Projects</h1>
+    <div class="d-flex justify-content-center text-start flex-wrap">
+      @if (project$ | async; as projects) {
+      @for (project of projects; track project) {
+      <mat-card class="m-3 w-25 pb-5">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>{{ project.stack.icon }}</mat-icon>
+          <mat-card-title>{{ project.name }}</mat-card-title>
+          <mat-card-subtitle>
+            <span class="d-block">{{ project.stack.name }}</span>
+            <span class="d-block">{{ project.dateStart }} - {{ project.dateEnd }}</span>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="my-3">
+          {{ project.description }}
+        </mat-card-content>
+          <mat-card-actions class="position-absolute bottom-0">
+            <a mat-button [href]="project.sourceUrl" target="_blank">
+              <mat-icon>code</mat-icon>
+              Source
+            </a>
+          </mat-card-actions>
+      </mat-card>
+      }
+      }
+    </div>
+  </div>
+</div>

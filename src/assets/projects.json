@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Expo 67 web project",
+    "description": "Simple website on expo 67 baseball team",
+    "sourceUrl": "https://github.com/phil-gab99/devoir1",
+    "dateStart": "2020-01",
+    "dateEnd": "2020-04",
+    "stack": {
+      "name": "Web",
+      "icon": "language"
+    },
+    "featured": true
+  },
+  {
+    "name": "Store management",
+    "description": "Java Swing based GUI app",
+    "sourceUrl": "https://github.com/phil-gab99/Prog2TP1",
+    "dateStart": "2020-10",
+    "dateEnd": "2020-11",
+    "stack": {
+      "name": "Java",
+      "icon": "local_cafe"
+    },
+    "featured": true
+  },
+  {
+    "name": "Single Cycle Processor",
+    "description": "MIPS based processor with logical circuit defined in VHDL",
+    "sourceUrl": "https://github.com/phil-gab99/devoir4-1227",
+    "dateStart": "2020-11",
+    "dateEnd": "2020-12",
+    "stack": {
+      "name": "MIPS",
+      "icon": "developer_board"
+    },
+    "featured": true
+  },
+  {
+    "name": "L-System",
+    "description": "Java application with use of Postscript to create interesting patterns from JSON configurations",
+    "sourceUrl": "https://github.com/phil-gab99/IFT2015-Devoir1",
+    "dateStart": "2021-02",
+    "dateEnd": "2021-02",
+    "stack": {
+      "name": "Java",
+      "icon": "local_cafe"
+    },
+    "featured": true
+  },
+  {
+    "name": "Psil",
+    "description": "Haskell custom language interpreter",
+    "sourceUrl": "https://github.com/phil-gab99/IFT2035-TP1",
+    "dateStart": "2021-04",
+    "dateEnd": "2021-04",
+    "stack": {
+      "name": "Haskell",
+      "icon": "functions"
+    },
+    "featured": true
+  },
+  {
+    "name": "μpts",
+    "description": "Prolog custom language interpreter",
+    "sourceUrl": "https://github.com/phil-gab99/IFT2035-TP2",
+    "dateStart": "2021-05",
+    "dateEnd": "2021-06",
+    "stack": {
+      "name": "Prolog",
+      "icon": "pattern"
+    },
+    "featured": true
+  }
+]

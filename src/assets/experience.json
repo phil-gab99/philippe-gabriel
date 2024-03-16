@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Tutor",
+    "location": "Dawson College - Montreal, QC",
+    "dateStart": "2017-09",
+    "dateEnd": "2018-06",
+    "description": [
+      "Collaborated with students to complete homework assignments,
+identify lagging skills and correct weaknesses",
+      "Planned lessons for allotted time to about 15 tutees to strengthen weak subjects and build skills ",
+      "Taught and assisted students in areas such as Linear Algebra, Physics and Chemistry",
+      "Created tailored lesson plans and study guides"
+    ]
+  },
+  {
+    "name": "Intern",
+    "location": "Dawson College - Montreal, QC",
+    "dateStart": "2018-06",
+    "dateEnd": "2018-08",
+    "description": [
+      "Internship which focused on an area of neuroscence: DTI (Diffusion tensor imaging)",
+      "Involved using shell and python scripts for image processing",
+      "Produced weekly presentations on project progress"
+    ]
+  },
+  {
+    "name": "Teacher Assistant in Computer Science",
+    "location": "Université de Montréal - Montreal QC",
+    "dateStart": "2021-09",
+    "dateEnd": "2023-04",
+    "description": [
+      "Assisted teachers in providing TA sessions, correcting assignments as well as providing availabilities for students",
+      "Involved courses relate to topics such as Computer Architecture, General Programming, Data Structures, Programming Language Design, System Administration"
+    ]
+  },
+  {
+    "name": "Technology Analyst Intern",
+    "location": "Morgan Stanley - Montreal, QC",
+    "dateStart": "2022-05",
+    "dateEnd": "2022-08",
+    "description": [
+      "Joined the Information Management Team and developed a Java Spring project",
+      "Learned and familiarized with many development tools such as the Spring Framework, Spring Boot, Jenkins, custom devops tools, etc..."
+    ]
+  },
+  {
+    "name": "Technology Analyst",
+    "location": "Morgan Stanley - Montreal, QC",
+    "dateStart": "2023-02",
+    "dateEnd": "present",
+    "description": [
+      "Joined the Information Management Team as a permanent position",
+      "Took part in the Technology Analyst Program offered by Morgan Stanley to train new employees"
+    ]
+  }
+]
