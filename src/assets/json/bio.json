@@ -8,5 +8,23 @@
     "Quickly masters new software packages and hardware technologies",
     "Comfortable with working collaboratively over communication platforms or autonomously",
     "Fluent in both English and French"
+  ],
+  "profile": "assets/img/prof.png",
+  "contact": [
+    {
+      "iconSet": "fa-solid",
+      "icon": "fa-envelope",
+      "link": "mailto:pgabriel999@hotmail.com"
+    },
+    {
+      "iconSet": "fa-brands",
+      "icon": "fa-linkedin",
+      "link": "https://www.linkedin.com/in/philippe-gabriel-52b945149/"
+    },
+    {
+      "iconSet": "fa-brands",
+      "icon": "fa-github",
+      "link": "https://github.com/phil-gab99"
+    }
   ]
 }

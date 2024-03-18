@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BioService {
-  private static readonly BIO_PATH: string = 'assets/bio.json'
+  private static readonly BIO_PATH: string = 'assets/json/bio.json'
 
   constructor(private readonly http: HttpClient) {}
 

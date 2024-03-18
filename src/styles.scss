@@ -2,11 +2,12 @@
 
 @import 'bootstrap/scss/bootstrap';
 // @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import '@angular/material/prebuilt-themes/indigo-pink.css';
-// @import '@angular/material/prebuilt-themes/pink-bluegrey.css';
-// @import '@angular/material/prebuilt-themes/purple-green.css';
-@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '@angular/material/prebuilt-themes/indigo-pink';
+// @import '@angular/material/prebuilt-themes/pink-bluegrey';
+// @import '@angular/material/prebuilt-themes/purple-green';
+// @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import '@fortawesome/fontawesome-free/css/all'
 
-html, body  {
-  height: 100%;
-}
+// html, body  {
+//   height: 100%;
+// }

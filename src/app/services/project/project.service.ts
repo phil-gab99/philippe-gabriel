@@ -7,7 +7,7 @@ import { Project } from '../../models/project.model';
   providedIn: 'root'
 })
 export class ProjectService {
-  private static readonly PROJECTS_PATH: string = 'assets/projects.json'
+  private static readonly PROJECTS_PATH: string = 'assets/json/projects.json'
 
   constructor(private readonly http: HttpClient) {}
 
