@@ -1,13 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Observable, filter, mergeAll, toArray } from 'rxjs';
-import { Project } from '../../models/project.model';
+import { Observable, filter, mergeAll, toArray } from 'rxjs'
+import { Project } from '../../models/project.model'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
-  private static readonly PROJECTS_PATH: string = 'assets/json/projects.json'
+  static readonly PROJECTS_PATH: string = 'assets/json/projects.json'
 
   constructor(private readonly http: HttpClient) {}
 

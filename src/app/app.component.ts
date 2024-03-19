@@ -1,5 +1,4 @@
 import { Component } from '@angular/core'
-import { RouterOutlet } from '@angular/router'
 import { HomeComponent } from './components/home/home.component'
 import { NavbarComponent } from './components/navbar/navbar.component'
 import { ProjectsComponent } from './components/projects/projects.component'
@@ -8,7 +7,6 @@ import { ProjectsComponent } from './components/projects/projects.component'
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
     HomeComponent,
     NavbarComponent,
     ProjectsComponent
