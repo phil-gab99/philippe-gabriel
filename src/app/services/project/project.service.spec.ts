@@ -4,7 +4,7 @@ import { Project } from '../../models/project.model'
 import { ProjectService } from './project.service'
 
 describe('ProjectService', () => {
-  let service: ProjectService
+  let projectService: ProjectService
   let httpMock: HttpTestingController
 
   beforeEach(() => {
@@ -14,7 +14,7 @@ describe('ProjectService', () => {
       ]
     })
 
-    service = TestBed.inject(ProjectService)
+    projectService = TestBed.inject(ProjectService)
     httpMock = TestBed.inject(HttpTestingController)
   })
 
@@ -23,7 +23,7 @@ describe('ProjectService', () => {
   })
 
   it('should be created', () => {
-    expect(service).toBeTruthy()
+    expect(projectService).toBeTruthy()
   })
 
   describe('getProjects', () => {
@@ -49,7 +49,7 @@ describe('ProjectService', () => {
         }
       ]
 
-      service.getProjects().subscribe((projectsData: Project[]) => {
+      projectService.getProjects().subscribe((projectsData: Project[]) => {
         expect(projectsData).toEqual(mockProjectsData)
       })
 
@@ -86,7 +86,7 @@ describe('ProjectService', () => {
 
       const mockFeaturedProjects: Project[] = mockProjectsData.filter((p: Project) => p.featured)
 
-      service.getProjects().subscribe((projectsData: Project[]) => {
+      projectService.getProjects().subscribe((projectsData: Project[]) => {
         expect(projectsData).toEqual(mockFeaturedProjects)
       })
 

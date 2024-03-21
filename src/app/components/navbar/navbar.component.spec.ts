@@ -1,15 +1,15 @@
+import { Location } from '@angular/common'
+import { provideLocationMocks } from '@angular/common/testing'
 import { DebugElement } from '@angular/core'
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
+import { provideRouter, withInMemoryScrolling } from '@angular/router'
+import { RouterTestingHarness } from '@angular/router/testing'
 import { of } from 'rxjs'
 import { Bio } from '../../models/bio.model'
 import { NavItem } from '../../models/navItem.model'
 import { BioService } from '../../services/bio/bio.service'
 import { NavbarComponent } from './navbar.component'
-import { provideRouter, withInMemoryScrolling } from '@angular/router'
-import { RouterTestingHarness } from '@angular/router/testing'
-import { provideLocationMocks } from '@angular/common/testing'
-import { Location } from '@angular/common'
 
 describe('NavbarComponent', () => {
   const bioDataMock: Bio = {

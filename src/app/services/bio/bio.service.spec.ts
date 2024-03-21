@@ -1,4 +1,4 @@
-import { HttpClientTestingModule, HttpTestingController, TestRequest, provideHttpClientTesting } from '@angular/common/http/testing'
+import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing'
 import { TestBed, fakeAsync, tick } from '@angular/core/testing'
 import { Bio } from '../../models/bio.model'
 import { BioService } from './bio.service'
