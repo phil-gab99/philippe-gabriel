@@ -23,11 +23,11 @@ import { BioService } from '../../services/bio/bio.service'
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  bio$: Observable<Bio> = this.bioService.getBio()
+  readonly bio$: Observable<Bio> = this.bioService.getBio()
 
-  navItems: NavItem[] = [
-    { title: 'My Projects', path: '/projects' },
-    { title: 'My Experience', path: '/experience' }
+  readonly navItems: NavItem[] = [
+    { title: 'My Projects', path: '/', fragment: 'projects' },
+    { title: 'My Experience', path: '/', fragment: 'experience' }
   ]
 
   constructor(private readonly bioService: BioService) {}

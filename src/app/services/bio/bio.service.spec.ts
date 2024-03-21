@@ -1,11 +1,11 @@
-import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing'
+import { HttpClientTestingModule, HttpTestingController, TestRequest, provideHttpClientTesting } from '@angular/common/http/testing'
 import { TestBed, fakeAsync, tick } from '@angular/core/testing'
 import { Bio } from '../../models/bio.model'
 import { BioService } from './bio.service'
 
 describe('BioService', () => {
-  let service: BioService
-  let httpTestingController: HttpTestingController
+  let bioService: BioService
+  let httpMock: HttpTestingController
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -14,16 +14,16 @@ describe('BioService', () => {
       ]
     })
 
-    service = TestBed.inject(BioService)
-    httpTestingController = TestBed.inject(HttpTestingController)
+    bioService = TestBed.inject(BioService)
+    httpMock = TestBed.inject(HttpTestingController)
   })
 
   afterEach(() => {
-    httpTestingController.verify()
+    httpMock.verify()
   })
 
   it('should be created', () => {
-    expect(service).toBeTruthy()
+    expect(bioService).toBeTruthy()
   })
 
   describe('getBio', () => {
@@ -36,13 +36,13 @@ describe('BioService', () => {
         contact: [{ iconSet: 'set', icon: 'icon', link: 'link' }]
       }
 
-      service.getBio().subscribe((bioData: Bio) => {
+      bioService.getBio().subscribe((bioData: Bio) => {
         expect(bioData).toEqual(mockBioData)
       })
 
       tick()
 
-      const req: TestRequest = httpTestingController.expectOne(BioService.BIO_PATH)
+      const req: TestRequest = httpMock.expectOne(BioService.BIO_PATH)
       expect(req.request.method).toEqual('GET')
       expect(req.request.url).toEqual(BioService.BIO_PATH)
 

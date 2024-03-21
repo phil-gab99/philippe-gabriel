@@ -1,11 +1,10 @@
-import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Bio } from '../../models/bio.model';
-import { BioService } from '../../services/bio/bio.service';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { AsyncPipe } from '@angular/common'
+import { Component } from '@angular/core'
+import { MatButtonModule } from '@angular/material/button'
+import { MatIconModule } from '@angular/material/icon'
+import { Observable } from 'rxjs'
+import { Bio } from '../../models/bio.model'
+import { BioService } from '../../services/bio/bio.service'
 
 @Component({
   selector: 'app-home',
@@ -13,14 +12,13 @@ import { RouterLink } from '@angular/router';
   imports: [
     AsyncPipe,
     MatButtonModule,
-    MatIconModule,
-    RouterLink
+    MatIconModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  bio$: Observable<Bio> = this.bioService.getBio()
+  readonly bio$: Observable<Bio> = this.bioService.getBio()
 
   constructor(private bioService: BioService) {}
 }

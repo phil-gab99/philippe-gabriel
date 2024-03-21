@@ -4,24 +4,25 @@
     <div class="d-flex justify-content-center text-start flex-wrap">
       @if (project$ | async; as projects) {
       @for (project of projects; track project) {
-      <mat-card class="m-3 w-25 pb-5">
+      <mat-card data-testid="project-cards" class="m-3 w-25 pb-5">
         <mat-card-header>
-          <mat-icon class="my-3 ps-1 py-1" mat-card-avatar [fontSet]="project.stack.iconSet" [fontIcon]="project.stack.icon"></mat-icon>
-          <mat-card-title>{{ project.name }}</mat-card-title>
+          <mat-icon data-testid="stack-icon" class="my-3 ps-1 py-1" mat-card-avatar [fontSet]="project.stack.iconSet"
+            [fontIcon]="project.stack.icon"></mat-icon>
+          <mat-card-title data-testid="name">{{ project.name }}</mat-card-title>
           <mat-card-subtitle>
-            <span class="d-block">{{ project.stack.name }}</span>
-            <span class="d-block">{{ project.dateStart }} - {{ project.dateEnd }}</span>
+            <span data-testid="stack-name" class="d-block">{{ project.stack.name }}</span>
+            <span data-testid="date" class="d-block">{{ project.dateStart }} - {{ project.dateEnd }}</span>
           </mat-card-subtitle>
         </mat-card-header>
-        <mat-card-content class="my-3">
+        <mat-card-content data-testid="description" class="my-3">
           {{ project.description }}
         </mat-card-content>
-          <mat-card-actions class="position-absolute bottom-0">
-            <a mat-button [href]="project.sourceUrl" target="_blank">
-              <mat-icon fontSet="fa-brands" fontIcon="fa-git-alt"></mat-icon>
-              Source
-            </a>
-          </mat-card-actions>
+        <mat-card-actions class="position-absolute bottom-0">
+          <a mat-button data-testid="source-url" [href]="project.sourceUrl" target="_blank">
+            <mat-icon fontSet="fa-brands" fontIcon="fa-git-alt"></mat-icon>
+            Source
+          </a>
+        </mat-card-actions>
       </mat-card>
       }
       }

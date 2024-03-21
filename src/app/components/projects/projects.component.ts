@@ -1,12 +1,11 @@
 import { AsyncPipe } from '@angular/common'
 import { Component } from '@angular/core'
+import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card'
+import { MatIconModule } from '@angular/material/icon'
 import { Observable } from 'rxjs'
 import { Project } from '../../models/project.model'
 import { ProjectService } from '../../services/project/project.service'
-import { MatButtonModule } from '@angular/material/button'
-import { RouterLink } from '@angular/router'
-import { MatIconModule } from '@angular/material/icon'
 
 @Component({
   selector: 'app-projects',
@@ -15,8 +14,7 @@ import { MatIconModule } from '@angular/material/icon'
     AsyncPipe,
     MatButtonModule,
     MatCardModule,
-    MatIconModule,
-    RouterLink
+    MatIconModule
   ],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'

@@ -5,7 +5,7 @@ import { ProjectService } from './project.service'
 
 describe('ProjectService', () => {
   let service: ProjectService
-  let httpTestingController: HttpTestingController
+  let httpMock: HttpTestingController
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -15,11 +15,11 @@ describe('ProjectService', () => {
     })
 
     service = TestBed.inject(ProjectService)
-    httpTestingController = TestBed.inject(HttpTestingController)
+    httpMock = TestBed.inject(HttpTestingController)
   })
 
   afterEach(() => {
-    httpTestingController.verify()
+    httpMock.verify()
   })
 
   it('should be created', () => {
@@ -55,7 +55,7 @@ describe('ProjectService', () => {
 
       tick()
 
-      const req: TestRequest = httpTestingController.expectOne(ProjectService.PROJECTS_PATH)
+      const req: TestRequest = httpMock.expectOne(ProjectService.PROJECTS_PATH)
       expect(req.request.method).toEqual('GET')
       expect(req.request.url).toEqual(ProjectService.PROJECTS_PATH)
 
@@ -93,7 +93,7 @@ describe('ProjectService', () => {
       tick()
 
 
-      const req: TestRequest = httpTestingController.expectOne(ProjectService.PROJECTS_PATH)
+      const req: TestRequest = httpMock.expectOne(ProjectService.PROJECTS_PATH)
       expect(req.request.method).toEqual('GET')
       expect(req.request.url).toEqual(ProjectService.PROJECTS_PATH)
 

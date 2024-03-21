@@ -15,5 +15,5 @@ import { ProjectsComponent } from './components/projects/projects.component'
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'philippe-gabriel'
+  readonly title = 'Philippe Gabriel'
 }

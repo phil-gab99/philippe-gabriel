@@ -1,15 +1,15 @@
 <mat-toolbar class="position-sticky top-0">
   @if (bio$ | async; as bio) {
-  <button  type="button" mat-button routerLink="/">
-    <span class="fs-4 fw-bold">{{ bio.firstName }}</span>
-    <span class="fs-4 fw-light">{{ bio.lastName }}</span>
+  <button data-testid="home-button" type="button" mat-button routerLink="/" fragment="home">
+    <span data-testid="first-name" class="fs-4 fw-bold">{{ bio.firstName }}</span>
+    <span data-testid="last-name" class="fs-4 fw-light">{{ bio.lastName }}</span>
   </button>
   }
 
   <span class="spacer"></span>
 
   @for (item of navItems; track item) {
-  <button class="fs-5 px-3" mat-button>
+  <button data-testid="nav-items" class="fs-5 px-3" mat-button [routerLink]="item.path" [fragment]="item.fragment">
     {{ item.title }}
   </button>
   }
