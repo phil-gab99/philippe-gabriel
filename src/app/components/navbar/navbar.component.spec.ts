@@ -1,7 +1,7 @@
 import { Location } from '@angular/common'
 import { provideLocationMocks } from '@angular/common/testing'
 import { DebugElement } from '@angular/core'
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { provideRouter, withInMemoryScrolling } from '@angular/router'
 import { RouterTestingHarness } from '@angular/router/testing'
@@ -93,25 +93,26 @@ describe('NavbarComponent', () => {
       navbarLocation = TestBed.inject(Location)
     }))
 
-    it('should navigate to home component', () => {
+    it('should navigate to home component', fakeAsync(() => {
       const homeButton: DebugElement = navbarHarness.routeDebugElement!.query(By.css('[data-testid="home-button"]'))
 
       homeButton.triggerEventHandler('click', { button: 0 })
 
-      expect(navbarLocation.path()).toBe('/')
-    })
+      tick()
 
-    it('should navigate to navigation items', () => {
+      expect(navbarLocation.path()).toBe('/#home')
+    }))
+
+    it('should navigate to navigation items', fakeAsync(() => {
       const navItems: DebugElement[] = navbarHarness.routeDebugElement!.queryAll(By.css('[data-testid="nav-items"]'))
 
-      navItems?.forEach((item: DebugElement, i: number) => {
+      navItems.forEach((item: DebugElement, i: number) => {
         item.triggerEventHandler('click', { button: 0 })
 
-        expect(navbarLocation.path()).toBe(navbarComponent.navItems[i].path)
+        tick()
 
-        // How to test framgent?
-        // expect(???).toBe(navbarComponent.navItems[i].fragment)
+        expect(navbarLocation.path()).toBe(`${navbarComponent.navItems[i].path}#${navbarComponent.navItems[i].fragment}`)
       })
-    })
+    }))
   })
 })

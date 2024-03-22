@@ -14,7 +14,7 @@
     <hr class="border border-primary opacity-50 mx-5">
     <div class="d-flex justify-content-center">
       @for (con of bio.contact; track con) {
-      <a data-testid="contact-link" mat-icon-button [href]=con.link>
+      <a data-testid="contact-link" mat-icon-button (click)="redirectService.redirect(con.link)">
         <mat-icon data-testid="contact-icon" [fontSet]="con.iconSet" [fontIcon]="con.icon"></mat-icon>
       </a>
       }

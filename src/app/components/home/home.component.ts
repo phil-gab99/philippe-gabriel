@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { Observable } from 'rxjs'
 import { Bio } from '../../models/bio.model'
 import { BioService } from '../../services/bio/bio.service'
+import { RedirectService } from '../../services/redirect/redirect.service'
 
 @Component({
   selector: 'app-home',
@@ -14,11 +15,14 @@ import { BioService } from '../../services/bio/bio.service'
     MatButtonModule,
     MatIconModule
   ],
+  providers: [
+    RedirectService
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   readonly bio$: Observable<Bio> = this.bioService.getBio()
 
-  constructor(private bioService: BioService) {}
+  constructor(private readonly bioService: BioService, public readonly redirectService: RedirectService) {}
 }

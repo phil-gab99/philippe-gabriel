@@ -1,24 +1,30 @@
 import { DebugElement } from '@angular/core'
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
 import { of } from 'rxjs'
 import { Bio } from '../../models/bio.model'
 import { BioService } from '../../services/bio/bio.service'
 import { HomeComponent } from './home.component'
+import { RedirectService } from '../../services/redirect/redirect.service'
 
 describe('HomeComponent', () => {
-  let homeComponent: HomeComponent
-  let homeFixture: ComponentFixture<HomeComponent>
   const bioDataMock: Bio = {
     firstName: 'first',
     lastName: 'last',
     about: ['abt1', 'abt2'],
     profile: 'assets/img/profile',
-    contact: [{ iconSet: 'set', icon: 'icon', link: 'https://link.com/' }]
+    contact: [{ iconSet: 'set', icon: 'icon', link: 'http://example.com/' }]
   }
   const bioServiceMock: Pick<BioService, 'getBio'> = {
     getBio: jest.fn(() => of(bioDataMock))
   }
+  const redirectServiceMock: Pick<RedirectService, 'redirect'> = {
+    redirect: jest.fn()
+  }
+  window.open = jest.fn()
+
+  let homeComponent: HomeComponent
+  let homeFixture: ComponentFixture<HomeComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -26,7 +32,8 @@ describe('HomeComponent', () => {
         HomeComponent
       ],
       providers: [
-        { provide: BioService, useValue: bioServiceMock }
+        { provide: BioService, useValue: bioServiceMock },
+        { provide: RedirectService, useValue: redirectServiceMock }
       ]
     }).compileComponents()
 
@@ -67,17 +74,49 @@ describe('HomeComponent', () => {
   })
 
   it('should render contact links', () => {
-    const contactLinks = homeFixture.debugElement.queryAll(By.css('[data-testid="contact-link"]'))
-    const contactIcons =  homeFixture.debugElement.queryAll(By.css('[data-testid="contact-icon"]'))
+    const contactIcons: DebugElement[] = homeFixture.debugElement.queryAll(By.css('[data-testid="contact-icon"]'))
 
-    expect(contactLinks.length).toBe(bioDataMock.contact.length)
     expect(contactIcons.length).toBe(bioDataMock.contact.length)
-    expect(contactLinks.map((e: DebugElement) => (e.nativeElement as HTMLAnchorElement).href)).toEqual(bioDataMock.contact.map(con => con.link))
     expect(contactIcons.map((e: DebugElement) => e.nativeElement.getAttribute('fonticon'))).toEqual(bioDataMock.contact.map(con => con.icon))
   })
 
+  // TODO: FIX THIS
   it('should navigate to contact urls', () => {
-    // TODO
-    expect(true).toBe(true)
+    const contactLinks: DebugElement[] = homeFixture.debugElement.queryAll(By.css('[data-testid="contact-link"]'))
+
+    contactLinks[0].triggerEventHandler('click', { button: 0 })
+    expect(redirectServiceMock.redirect).toHaveBeenCalled()
+
+    // contactLinks.forEach((item: DebugElement) => {
+    //   item.triggerEventHandler('click', { button: 0 })
+    //   expect(redirectServiceMock.redirect).toHaveBeenCalled()
+    // })
   })
 })
+
+  // describe('Navigation', () => {
+  //   let homeHarness: RouterTestingHarness
+  //   let homeComponent: HomeComponent
+  //   let homeLocation: Location
+
+  //   beforeEach(waitForAsync(async () => {
+  //     TestBed.configureTestingModule({
+  //       providers: [
+  //         provideRouter([
+  //           { path: '', pathMatch: 'full', component: HomeComponent }
+  //         ]),
+  //         provideLocationMocks(),
+  //         { provide: BioService, useValue: bioServiceMock }
+  //       ]
+  //     })
+
+  //     homeHarness = await RouterTestingHarness.create()
+  //     homeComponent = await homeHarness.navigateByUrl('', HomeComponent)
+  //     homeLocation = TestBed.inject(Location)
+  //   }))
+
+  //   it('should navigate to contact urls', () => {
+  //     // TODO
+  //     expect(true).toBe(true)
+  //   })
+  // })
