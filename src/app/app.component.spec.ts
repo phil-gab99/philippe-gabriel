@@ -1,23 +1,47 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { By } from '@angular/platform-browser'
+import { MockComponent } from 'ng-mocks'
 import { AppComponent } from './app.component'
+import { HomeComponent } from './components/home/home.component'
+import { NavbarComponent } from './components/navbar/navbar.component'
+import { ProjectsComponent } from './components/projects/projects.component'
 
-xdescribe('AppComponent', () => {
+describe('AppComponent', () => {
   let appComponent: AppComponent
-  let fixture: ComponentFixture<AppComponent>
+  let appFixture: ComponentFixture<AppComponent>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        AppComponent
-      ],
-    }).compileComponents()
+  beforeEach(() => {
+    TestBed.overrideComponent(AppComponent, {
+      set: {
+        imports: [
+          MockComponent(HomeComponent),
+          MockComponent(NavbarComponent),
+          MockComponent(ProjectsComponent)
+        ]
+      }
+    })
 
-    fixture = TestBed.createComponent(AppComponent)
-    appComponent = fixture.componentInstance
-    fixture.detectChanges()
+    appFixture = TestBed.createComponent(AppComponent)
+    appComponent = appFixture.componentInstance
+    appFixture.detectChanges()
   })
 
   it('should create the app', () => {
     expect(appComponent).toBeTruthy()
+  })
+
+  it('should render navbar', () => {
+    const navbar = appFixture.debugElement.query(By.directive(NavbarComponent))
+    expect(navbar).toBeTruthy()
+  })
+
+  it('should render home', () => {
+    const home = appFixture.debugElement.query(By.directive(HomeComponent))
+    expect(home).toBeTruthy()
+  })
+
+  it('should render projects', () => {
+    const projects = appFixture.debugElement.query(By.directive(ProjectsComponent))
+    expect(projects).toBeTruthy()
   })
 })

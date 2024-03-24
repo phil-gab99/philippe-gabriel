@@ -1,16 +1,18 @@
-import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing'
+import { provideHttpClient } from '@angular/common/http'
+import { HttpTestingController, TestRequest, provideHttpClientTesting } from '@angular/common/http/testing'
 import { TestBed, fakeAsync, tick } from '@angular/core/testing'
 import { Bio } from '../../models/bio.model'
 import { BioService } from './bio.service'
 
-describe('BioService', () => {
+describe(BioService.name, () => {
   let bioService: BioService
   let httpMock: HttpTestingController
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting()
       ]
     })
 

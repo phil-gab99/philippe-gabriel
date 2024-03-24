@@ -1,9 +1,9 @@
 import { Location } from '@angular/common'
 import { provideLocationMocks } from '@angular/common/testing'
-import { DebugElement } from '@angular/core'
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core'
 import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing'
 import { By } from '@angular/platform-browser'
-import { provideRouter, withInMemoryScrolling } from '@angular/router'
+import { RouterLink, provideRouter, withInMemoryScrolling } from '@angular/router'
 import { RouterTestingHarness } from '@angular/router/testing'
 import { of } from 'rxjs'
 import { Bio } from '../../models/bio.model'
@@ -11,7 +11,7 @@ import { NavItem } from '../../models/navItem.model'
 import { BioService } from '../../services/bio/bio.service'
 import { NavbarComponent } from './navbar.component'
 
-describe('NavbarComponent', () => {
+describe(NavbarComponent.name, () => {
   const bioDataMock: Bio = {
     firstName: 'first',
     lastName: 'last',
@@ -27,16 +27,22 @@ describe('NavbarComponent', () => {
     let navbarComponent: NavbarComponent
     let navbarFixture: ComponentFixture<NavbarComponent>
 
-    beforeEach(async () => {
-      await TestBed.configureTestingModule({
-        imports: [
-          NavbarComponent
-        ],
-        providers: [
-          provideRouter([]),
-          { provide: BioService, useValue: bioServiceMock }
-        ]
-      }).compileComponents()
+    beforeEach(() => {
+      TestBed.overrideComponent(NavbarComponent, {
+        add: {
+          providers: [
+            { provide: BioService, useValue: bioServiceMock },
+          ],
+          schemas: [
+            NO_ERRORS_SCHEMA
+          ]
+        },
+        remove: {
+          imports: [
+            RouterLink
+          ]
+        }
+      })
 
       navbarFixture = TestBed.createComponent(NavbarComponent)
       navbarComponent = navbarFixture.componentInstance

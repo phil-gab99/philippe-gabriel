@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { Observable } from 'rxjs'
 import { Project } from '../../models/project.model'
 import { ProjectService } from '../../services/project/project.service'
+import { RedirectService } from '../../services/redirect/redirect.service'
 
 @Component({
   selector: 'app-projects',
@@ -22,5 +23,5 @@ import { ProjectService } from '../../services/project/project.service'
 export class ProjectsComponent {
   project$: Observable<Project[]> = this.projectService.getProjects()
 
-  constructor(private readonly projectService: ProjectService) {}
+  constructor(private readonly projectService: ProjectService, public readonly redirectService: RedirectService) {}
 }

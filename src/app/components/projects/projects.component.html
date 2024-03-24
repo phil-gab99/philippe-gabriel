@@ -18,10 +18,10 @@
           {{ project.description }}
         </mat-card-content>
         <mat-card-actions class="position-absolute bottom-0">
-          <a mat-button data-testid="source-url" [href]="project.sourceUrl" rel="noopener">
+          <button mat-button data-testid="source-url" (click)="redirectService.redirect(project.sourceUrl)">
             <mat-icon fontSet="fa-brands" fontIcon="fa-git-alt"></mat-icon>
             Source
-          </a>
+          </button>
         </mat-card-actions>
       </mat-card>
       }

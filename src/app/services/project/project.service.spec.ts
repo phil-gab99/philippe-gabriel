@@ -1,16 +1,18 @@
-import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing'
+import { provideHttpClient } from '@angular/common/http'
+import { HttpTestingController, TestRequest, provideHttpClientTesting } from '@angular/common/http/testing'
 import { TestBed, fakeAsync, tick } from '@angular/core/testing'
 import { Project } from '../../models/project.model'
 import { ProjectService } from './project.service'
 
-describe('ProjectService', () => {
+describe(ProjectService.name, () => {
   let projectService: ProjectService
   let httpMock: HttpTestingController
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting()
       ]
     })
 

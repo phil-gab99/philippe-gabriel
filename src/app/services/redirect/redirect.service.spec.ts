@@ -1,21 +1,19 @@
 import { TestBed } from '@angular/core/testing'
-
 import { RedirectService } from './redirect.service'
 
-describe('RedirectService', () => {
+describe(RedirectService.name, () => {
   let redirectService: RedirectService
-  let windowOpenSpy: jest.SpyInstance<Window | null, [url?: string | URL | undefined, target?: string | undefined, features?: string | undefined], any>
+  let windowOpenSpy: jest.SpyInstance
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        RedirectService
-      ]
-    })
     redirectService = TestBed.inject(RedirectService)
 
     window.open = jest.fn()
     windowOpenSpy = jest.spyOn(window, 'open')
+  })
+
+  afterEach(() => {
+    windowOpenSpy.mockRestore()
   })
 
   it('should be created', () => {

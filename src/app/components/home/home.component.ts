@@ -15,9 +15,6 @@ import { RedirectService } from '../../services/redirect/redirect.service'
     MatButtonModule,
     MatIconModule
   ],
-  providers: [
-    RedirectService
-  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
