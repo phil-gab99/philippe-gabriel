@@ -31,7 +31,7 @@ describe(BioService.name, () => {
 
   describe('getBio', () => {
     it('should retrieve bio info', fakeAsync(() => {
-      const mockBioData: Bio = {
+      const bioDataMock: Bio = {
         firstName: 'first',
         lastName: 'last',
         about: ['abt1', 'abt2'],
@@ -40,7 +40,7 @@ describe(BioService.name, () => {
       };
 
       bioService.getBio().subscribe((bioData: Bio) => {
-        expect(bioData).toEqual(mockBioData);
+        expect(bioData).toEqual(bioDataMock);
       });
 
       tick();
@@ -49,7 +49,7 @@ describe(BioService.name, () => {
       expect(req.request.method).toEqual('GET');
       expect(req.request.url).toEqual(BioService.BIO_PATH);
 
-      req.flush(mockBioData);
+      req.flush(bioDataMock);
     }));
   });
 });

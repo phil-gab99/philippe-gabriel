@@ -31,7 +31,7 @@ describe(ProjectService.name, () => {
 
   describe('getProjects', () => {
     it('should retrieve projects', fakeAsync(() => {
-      const mockProjectsData: Project[] = [
+      const projectsDataMock: Project[] = [
         {
           name: 'p1',
           description: 'd1',
@@ -53,7 +53,7 @@ describe(ProjectService.name, () => {
       ];
 
       projectService.getProjects().subscribe((projectsData: Project[]) => {
-        expect(projectsData).toEqual(mockProjectsData);
+        expect(projectsData).toEqual(projectsDataMock);
       });
 
       tick();
@@ -62,11 +62,11 @@ describe(ProjectService.name, () => {
       expect(req.request.method).toEqual('GET');
       expect(req.request.url).toEqual(ProjectService.PROJECTS_PATH);
 
-      req.flush(mockProjectsData);
+      req.flush(projectsDataMock);
     }));
 
     it('should exclude non-featured projects', fakeAsync(() => {
-      const mockProjectsData: Project[] = [
+      const projectsDataMock: Project[] = [
         {
           name: 'p1',
           description: 'd1',
@@ -87,7 +87,7 @@ describe(ProjectService.name, () => {
         },
       ];
 
-      const mockFeaturedProjects: Project[] = mockProjectsData.filter(
+      const mockFeaturedProjects: Project[] = projectsDataMock.filter(
         (p: Project) => p.featured
       );
 
@@ -101,7 +101,7 @@ describe(ProjectService.name, () => {
       expect(req.request.method).toEqual('GET');
       expect(req.request.url).toEqual(ProjectService.PROJECTS_PATH);
 
-      req.flush(mockProjectsData);
+      req.flush(projectsDataMock);
     }));
   });
 });
