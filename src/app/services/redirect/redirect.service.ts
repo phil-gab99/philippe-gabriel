@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RedirectService {
   redirect(url: string) {
-    window.open(url, '_blank', 'noopener')
+    window.open(url, '_blank', 'noopener');
   }
 }

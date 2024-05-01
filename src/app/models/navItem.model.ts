@@ -1,5 +1,5 @@
 export interface NavItem {
-  title: string
-  path: string
-  fragment: string
+  title: string;
+  path: string;
+  fragment: string;
 }

@@ -1,24 +1,30 @@
 @if (bio$ | async; as bio) {
-<div class="container d-flex align-items-center min-vh-100">
-  <img data-testid="profile" class="mx-4" [src]="bio.profile" alt="profile" />
-  <div>
-    <h1>
-      Hello. My name is
-      <span data-testid="name" class="fw-bold">
-        {{ bio.firstName }} {{ bio.lastName }}
-      </span>
-    </h1>
-    @for (par of bio.about; track par) {
-    <h5 data-testid="about">{{ par }}</h5>
-    }
-    <hr class="border border-primary opacity-50 mx-5">
-    <div class="d-flex justify-content-center">
-      @for (con of bio.contact; track con) {
-      <button data-testid="contact-link" mat-icon-button (click)="redirectService.redirect(con.link)">
-        <mat-icon data-testid="contact-icon" [fontSet]="con.iconSet" [fontIcon]="con.icon"></mat-icon>
-      </button>
+  <div class="container d-flex align-items-center min-vh-100">
+    <img data-testid="profile" class="mx-4" [src]="bio.profile" alt="profile" />
+    <div>
+      <h1>
+        Hello. My name is
+        <span data-testid="name" class="fw-bold">
+          {{ bio.firstName }} {{ bio.lastName }}
+        </span>
+      </h1>
+      @for (par of bio.about; track par) {
+        <h5 data-testid="about">{{ par }}</h5>
       }
+      <hr class="border border-primary opacity-50 mx-5" />
+      <div class="d-flex justify-content-center">
+        @for (con of bio.contact; track con) {
+          <button
+            data-testid="contact-link"
+            mat-icon-button
+            (click)="redirectService.redirect(con.link)">
+            <mat-icon
+              data-testid="contact-icon"
+              [fontSet]="con.iconSet"
+              [fontIcon]="con.icon"></mat-icon>
+          </button>
+        }
+      </div>
     </div>
   </div>
-</div>
 }
