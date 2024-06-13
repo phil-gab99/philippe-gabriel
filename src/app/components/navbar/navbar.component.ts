@@ -27,6 +27,7 @@ export class NavbarComponent {
   readonly bio$: Observable<Bio> = this.bioService.getBio();
 
   readonly navItems: NavItem[] = [
+    { title: 'About Me', path: '/', fragment: 'home' },
     { title: 'My Projects', path: '/', fragment: 'projects' },
     { title: 'My Experience', path: '/', fragment: 'experience' },
   ];
